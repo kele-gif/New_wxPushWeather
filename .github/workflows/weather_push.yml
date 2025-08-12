@@ -1,0 +1,35 @@
+   name: 天气推送
+
+   on:
+     schedule:
+       - cron: '0 23 * * *'  # 北京时间早上7点 (UTC时间23点)
+       - cron: '0 15 * * *'  # 北京时间晚上23点 (UTC时间15点)
+     workflow_dispatch:
+
+   jobs:
+     push:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v3
+         
+         - name: 设置Python环境
+           uses: actions/setup-python@v4
+           with:
+             python-version: '3.9'
+             
+         - name: 安装依赖
+           run: |
+             pip install -r requirements.txt
+             
+         - name: 运行推送脚本
+           run: python main.py
+           env:
+             APP_ID: ${{ secrets.APP_ID }}
+             APP_SECRET: ${{ secrets.APP_SECRET }}
+             APP_KEY: ${{ secrets.APP_KEY }}
+             USER_IDS: ${{ secrets.USER_IDS }}
+             START_DATE: ${{ secrets.START_DATE }}
+             BIRTHDAY: ${{ secrets.BIRTHDAY }}
+             NAME: ${{ secrets.NAME }}
+             CITY: ${{ secrets.CITY }}
+   
