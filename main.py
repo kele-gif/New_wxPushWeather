@@ -173,7 +173,7 @@ if "now" not in realtime_json:
 
 realtime = realtime_json["now"]
 # 当前温度 拼接 当前天气
-now_temperature = realtime["temp"] + "℃" + realtime["text"]
+now_temperature = realtime["temp"] + "°C " + realtime["text"]
 # 添加调试信息
 print(f"实时天气数据: {realtime}")
 print(f"当前温度值: {now_temperature}")
