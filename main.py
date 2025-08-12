@@ -174,6 +174,9 @@ if "now" not in realtime_json:
 realtime = realtime_json["now"]
 # 当前温度 拼接 当前天气
 now_temperature = realtime["temp"] + "℃" + realtime["text"]
+# 添加调试信息
+print(f"实时天气数据: {realtime}")
+print(f"当前温度值: {now_temperature}")
 
 # 根据城市地理位置获取3天天气状况
 url = f"{api_host}/v7/weather/3d"
