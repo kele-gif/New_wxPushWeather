@@ -32,4 +32,5 @@
              BIRTHDAY: ${{ secrets.BIRTHDAY }}
              NAME: ${{ secrets.NAME }}
              CITY: ${{ secrets.CITY }}
-   
+             TEMPLATE_ID_DAY: ${{ secrets.TEMPLATE_ID_DAY }}
+             TEMPLATE_ID_NIGHT: ${{ secrets.TEMPLATE_ID_NIGHT }}
