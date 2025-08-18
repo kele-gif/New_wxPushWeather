@@ -1,36 +1,36 @@
 name: 天气推送
 
-   on:
-     schedule:
+on:
+  schedule:
     - cron: '30 22 * * *'  # 北京时间早上6点半 (UTC时间22点30分)
     - cron: '0 13 * * *'  # 北京时间晚上21点 (UTC时间13点)
-     workflow_dispatch:
+  workflow_dispatch:
 
-   jobs:
-     push:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         
-         - name: 设置Python环境
-           uses: actions/setup-python@v4
-           with:
-             python-version: '3.9'
-             
-         - name: 安装依赖
-           run: |
-             pip install -r requirements.txt
-             
-         - name: 运行推送脚本
-           run: python main.py
-           env:
-             APP_ID: ${{ secrets.APP_ID }}
-             APP_SECRET: ${{ secrets.APP_SECRET }}
-             APP_KEY: ${{ secrets.APP_KEY }}
-             USER_IDS: ${{ secrets.USER_IDS }}
-             START_DATE: ${{ secrets.START_DATE }}
-             BIRTHDAY: ${{ secrets.BIRTHDAY }}
-             NAME: ${{ secrets.NAME }}
-             CITY: ${{ secrets.CITY }}
-             TEMPLATE_ID_DAY: ${{ secrets.TEMPLATE_ID_DAY }}
-             TEMPLATE_ID_NIGHT: ${{ secrets.TEMPLATE_ID_NIGHT }}
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: 设置Python环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: 安装依赖
+        run: |
+          pip install -r requirements.txt
+          
+      - name: 运行推送脚本
+        run: python main.py
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+          APP_KEY: ${{ secrets.APP_KEY }}
+          USER_IDS: ${{ secrets.USER_IDS }}
+          START_DATE: ${{ secrets.START_DATE }}
+          BIRTHDAY: ${{ secrets.BIRTHDAY }}
+          NAME: ${{ secrets.NAME }}
+          CITY: ${{ secrets.CITY }}
+          TEMPLATE_ID_DAY: ${{ secrets.TEMPLATE_ID_DAY }}
+          TEMPLATE_ID_NIGHT: ${{ secrets.TEMPLATE_ID_NIGHT }}
