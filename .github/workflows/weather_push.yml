@@ -1,9 +1,9 @@
-   name: 天气推送
+name: 天气推送
 
    on:
      schedule:
-       - cron: '30 0 * * *'  # 北京时间早上8点半 (UTC时间0点30分)
-       - cron: '0 15 * * *'  # 北京时间晚上23点 (UTC时间15点)
+    - cron: '30 22 * * *'  # 北京时间早上6点半 (UTC时间22点30分)
+    - cron: '0 13 * * *'  # 北京时间晚上21点 (UTC时间13点)
      workflow_dispatch:
 
    jobs:
